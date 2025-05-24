@@ -1,0 +1,22 @@
+Entidade;Atributo;Tipo;Chave
+Pessoa;id_pessoa;INT;PK
+Pessoa;nome;VARCHAR(100);
+Pessoa;cpf;VARCHAR(14);
+Pessoa;contato;VARCHAR(100);
+Doador;id_doador;INT;PK, FK (Pessoa)
+Doador;tipo;VARCHAR(50);
+Doador;ativo;BOOLEAN;
+Atendimento;id_atendimento;INT;PK, FK (Pessoa)
+Regra;id_regra;INT;PK
+Regra;condicao;VARCHAR(100);
+Regra;dias_quarentena;INT;
+Quarentena;id_quarentena;INT;PK
+Quarentena;data_inicio;DATE;
+Quarentena;data_fim;DATE;
+Quarentena;id_doador;INT;FK (Doador)
+Quarentena;id_regra;INT;FK (Regra)
+Agendamento;id_agendamento;INT;PK
+Agendamento;data;DATE;
+Agendamento;hora;TIME;
+Agendamento;tipo;VARCHAR(50);
+Agendamento;id_doador;INT;FK (Doador)
