@@ -399,6 +399,8 @@ O sistema e-Triagem é capaz de:
 - ⚡ Scripts interativos via JavaScript
 - 🛠️ Fácil instalação e configuração em ambiente Apache/PHP
 
+<img width="800" height="600" alt="image" src="https://github.com/user-attachments/assets/ce044e46-b2cd-49d9-8016-249affe9d6c4" />
+
 ---
 
 Consulte o arquivo `GUIA-APACHE-PHP.md` para instruções detalhadas de instalação do Apache e PHP.
