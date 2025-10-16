@@ -1,134 +1,409 @@
-## Quarantine V.1.0
 
-### 1. Apresentação
+# Título do Projeto
 
-#### Gerenciamento de Quarentena de Voluntários em banco de sangue
+Uma breve descrição sobre o que esse projeto faz e para quem ele é
 
-**Quarantine** é um sistema webapp voltado para **bancos de sangue**, com o objetivo de **gerenciar períodos de quarentena de voluntários**.  
-No contexto da triagem para doação, muitas vezes é necessário aplicar regras de resguardo (como viagens recentes, uso de medicamentos ou condições de saúde temporárias).  
-Sem um sistema de controle eficiente, existe o risco de entrar em contato com voluntários **não liberados**, gerando retrabalho e até falhas no agendamento.
-
-A solução proposta é uma plataforma simples e objetiva, onde o administrador cadastra voluntários e suas respectivas **regras de quarentena**. O sistema então controla automaticamente quem está **liberado** ou **bloqueado**, oferecendo uma visão clara e confiável para agendamento de doações..  
-
-
-### 2. Especificaçao
-
-#### Principais Funcionalidades
-
-- CRUD de Voluntários (Doadores)
-- CRUD de Regras de Quarentena  
-- Associação de voluntários a regras específicas  
-- Liberação automática após o prazo de resguardo  
-
-#### Atores (usuários)
-
-- Admin
-- Captacao
-- Doador
-
-|                |ADMIN  |CAPTAÇAO | DOADOR|
-|--------------------------------------|---|---|---|
-|Cdastrar, Alterar e Remover DOADORES  | x |   |   |
-|Consultar DOADORES                    | x | x |   |
-|Cadastrar, Alterar e Remover REGRAS   | x |   |   |
-|Consultar REGRAS                      | x | x |   |
-|Aplicaçao de quarentena               | x | x |   |
-|Cancelamento de quarentena            | x | x |   |
-|Visualizaçao de status (pessoal)      |   |   | x |
-|Notificaçao de liberaçao de doador    |   |   | x |
-|Liberaçao automática de resguardo     |   |   |   |
-
-
-#### Tecnologias Envolvidas
-
-- *Backend*: [Flask](https://flask.palletsprojects.com/) (Python)  
-- *Frontend*: [Vue.js](https://vuejs.org/) (SPA ou páginas dinâmicas)  
-- *Banco*: [MariaDB](https://mariadb.org/) (banco de dados relacional)
-
-Outras ferramentas de apoio:
-
-- Modelagem: [MermaidChart](https://www.mermaidchart.com) (Modelagem de diagramas)
-- Prorotipação: [Playcode](https://playcode.io/new) (Diagramação rápida de HTML)
-- Documentação: [Playcode](https://markdownlivepreview.com/) (Markdown online editor)
-- Teste: [Beekeeper](https://www.beekeeperstudio.io/db/mariadb-client/) (Cliente para MariaDB)
-
-
-
-
-
-### 3. Projeto
-
-#### Principais Entidades de Negócio
-
-A entidade VOLUNTÁRIO concentra os atributos de identificação e perfil do doador, como nome, CPF e tipo sanguíneo. Já a entidade REGRAS descreve as condições aplicáveis, registrando sua descrição e o tempo associado. O relacionamento entre essas entidades é materializado pela tabela intermediária (QUARENTENA), que armazena o vínculo entre voluntários e regras, incluindo a data de atribuição e a data de início da quarentena, fundamentais para o acompanhamento e a rastreabilidade do processo.
-
-A figura 1 apresenta a representação ER desse modelo, e a figura 2 o modelo de classe (UML) do mesmo modelo.
-
-
-![]()
-<img src="https://github.com/HEMOFLOW/quarantine/blob/1b64303467fa324dcb45545416f7519be812e3d6/projeto/s2_diagrama_entidades%2Ber.png">
-> Figura 1 - Entidade-relacionamento
-
-
-O relacionamento entre essas entidades apresenta cardinalidade do tipo muitos-para-muitos (N:N), uma vez que um mesmo voluntário pode estar associado a diversas regras ao longo do tempo, e, da mesma forma, uma regra pode ser atribuída a diferentes voluntários. Esse relacionamento é viabilizado pela tabela intermediária (QUATENTENA), que inclui ainda os atributos data de atribuição e data de início da quarentena, assegurando o controle histórico e a rastreabilidade das aplicações de regras.
-
-![]()
-<img src="https://github.com/HEMOFLOW/quarantine/blob/1b64303467fa324dcb45545416f7519be812e3d6/projeto/s2_diagrama_classes.png">
-> Figura 2 - Diagrama de Classe (UML)
-
-
-O diagrama de estados (figura 3) representa o ciclo de vida de um VOLUNTARIO no sistema, destacando o estado LIBERADO como condição inicial e central do processo. 
-
-![]()
-<img src="https://github.com/HEMOFLOW/quarantine/blob/1b64303467fa324dcb45545416f7519be812e3d6/projeto/s2_diagrama_estadocor.png">
-> Figura 3 - Gestão de estados: VOLUNTARIO
-
-A partir dele, é possível a transição para os estados QUARENTENA, BLOQUEADO ou DESLIGADO, permitindo diferentes fluxos de controle conforme as regras de negócio. O retorno de QUARENTENA e BLOQUEADO para LIBERADO evidencia a possibilidade de reativação do registro, enquanto a transição para DESLIGADO caracteriza um estado final, sem possibilidade de retomada.
-A referencia para gestão de estado de um VOLUNTARIO, é realizada a partir da tabela-relacionamento QUARENTENA, e uma lógica de decisão.  
+# 🚀 GUIA APACHE + PHP - PROJETO QR CODE
+## Sistema de Doação de Sangue em PHP
 
 ---
-### 4. Resultados
 
-Os resultados do desenvolvimento são apresentados a partir da tela principal do sistema (figura 4), ilustrada nos prints do MVP. 
+## 📋 **CONVERSÃO COMPLETA REALIZADA**
 
-Basicamente, a concepção da tela segue uma proposta minimalista, priorizando princípios de usabilidade, redução de cliques desnecessários e apoio visual imediato para o usuário.
+Seu projeto Java foi convertido para **PHP** e está pronto para rodar no **Apache24**!
 
-A figura 4a exibe a listagem de voluntários, com indicação visual de seu estado atual: em verde quando o voluntário está liberado para doação e em vermelho quando encontra-se em quarentena.  
+---
 
-![]()
-<img src="https://github.com/HEMOFLOW/quarantine/blob/1b64303467fa324dcb45545416f7519be812e3d6/projeto/s2_telas_lista123.png">
-> Figura 4 - Listagem de voluntários
+## 🎯 **ARQUIVOS CRIADOS**
 
-A (figura 4b) a interação do usuário ao selecionar um voluntário na listagem. Nesse caso, a linha correspondente passa a ser destacada em amarelo, indicando o estado de seleção. Imediatamente, um popup é exibido (figura 4c), oferecendo duas ações principais: o envio de uma notificação de participação em campanha de doação de sangue ou a inclusão do voluntário em um período de quarentena. Nesta última opção, o sistema possibilita a escolha do tipo de quarentena e a definição de uma data de referência, permitindo ao usuário concluir o processo de forma simples e controlada (figura 5).
+### **Estrutura do Projeto PHP:**
+```
+projeto-qr-code-php/
+├── index.php                 # Página inicial
+├── login.php                 # Sistema de login
+├── cadastro.php              # Cadastro de usuários
+├── dashboard.php             # Painel do usuário
+├── logout.php                # Logout
+├── config/
+│   └── database.php          # Configuração do banco
+├── assets/
+│   ├── css/
+│   │   └── style.css         # Estilos CSS
+│   └── js/
+│       └── script.js         # JavaScript
+├── apache-config.conf        # Configuração do Apache
+├── instalar-apache.bat       # Script de instalação
+└── GUIA-APACHE-PHP.md        # Este guia
+```
 
+---
 
-![]()
-<img src="https://github.com/HEMOFLOW/quarantine/blob/cda8af678efe2641fdd021fc5595b340fcd177b9/projeto/s2_diagrama_atividade_quarentena.png">
-> Figura 5 - Fluxograma: APLICANDO QUARENTENA
+## 🚀 **INSTALAÇÃO AUTOMÁTICA**
 
-A interface também disponibiliza recursos de filtro e caeastro rápido. O filtro (topo da listagem) permite a seleção por nome ou CPF, bem como o refinamento por tipo sanguíneo, garantindo rapidez na localização de registros específicos. Já o cadastro rápido de novos voluntários, está disponível da parte de baixo da listagem.
+### **1. Execute o Script de Instalação**
+```cmd
+# Navegue para a pasta do projeto
+cd "H:\Meu Drive\98-WORKSPACES\02-HEMOFLOW\hemoflow-core\projetos\ProjetoQrCode\projeto-qr-code-php"
 
+# Execute o script de instalação
+instalar-apache.bat
+```
 
+**O script faz tudo automaticamente:**
+- ✅ Verifica Apache, PHP e MySQL
+- ✅ Para o Apache
+- ✅ Copia projeto para htdocs
+- ✅ Configura banco de dados
+- ✅ Configura Apache
+- ✅ Inicia Apache
+- ✅ Testa aplicação
+- ✅ Abre navegador
 
+---
 
-#### Aceitação
+## 🔧 **INSTALAÇÃO MANUAL**
 
-Para avaliar o protótipo, apresentamos a ferramenta a quatro possíveis futuros usuários, todos especialistas da área de doação de sangue e atendimento em bancos de sangue. Inicialmente, foi realizada uma breve descrição do aplicativo, destacando seus principais objetivos e funcionalidades. Em seguida, propusemos cinco tarefas do tipo “simulação guiada”, que funcionaram como desafios práticos para explorar a interface. Durante a execução dessas tarefas, monitoramos aspectos objetivos como o tempo gasto e o número de cliques necessários, bem como observamos as dificuldades enfrentadas e percepções espontâneas dos participantes, com o intuito de identificar pontos fortes e oportunidades de melhoria do sistema.
+### **1. Copiar Projeto**
+```cmd
+# Copiar para htdocs do Apache
+xcopy "projeto-qr-code-php" "C:\Apache24\htdocs\projeto-qr-code-php\" /E /I /Y
+```
 
-**Desafios propostos aos participantes:**
+### **2. Configurar Banco de Dados**
+```cmd
+# Criar banco
+mysql -u root -p"@Ed85962u" -e "CREATE DATABASE IF NOT EXISTS projeto_qr_code CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+```
 
-- *Consultar voluntários*: localizar rapidamente um voluntário específico, utilizando o filtro de busca por nome ou CPF.
+### **3. Configurar Apache**
+Adicione ao arquivo `C:\Apache24\conf\httpd.conf`:
+```apache
+# Projeto QR Code
+Include "C:/Apache24/htdocs/projeto-qr-code-php/apache-config.conf"
+```
 
-- *Aplicar filtro por tipo sanguíneo*: restringir a listagem para visualizar apenas os voluntários com determinado tipo sanguíneo.
+### **4. Iniciar Apache**
+```cmd
+net start Apache2.4
+```
 
-- *Selecionar voluntário*: clicar em um voluntário da listagem e confirmar a mudança de destaque (linha amarela).
+---
 
-- *Enviar notificação de convite*: acessar o popup e realizar o envio de uma notificação de participação em campanha de doação.
+## 🌐 **ACESSAR APLICAÇÃO**
 
-- *Aplicar quarentena*: selecionar uma regra de quarentena no popup, definir a data de início e concluir o processo.
+### **URLs de Acesso:**
+- **Página Inicial:** http://localhost/
+- **Login:** http://localhost/login.php
+- **Cadastro:** http://localhost/cadastro.php
+- **Dashboard:** http://localhost/dashboard.php
 
-![]()
-<img src="https://github.com/HEMOFLOW/quarantine/blob/4402ca541168de82a59b92ca0ebdf0fb78685517/projeto/aceitacao_teste_tabela_2.png">
-> Figura 6 - Tabela de teste e aceitação
+### **Dados de Teste:**
+- **CPF:** 123.456.789-00
+- **Senha:** senha123
 
+---
 
+## ✨ **FUNCIONALIDADES IMPLEMENTADAS**
+
+### **1. Sistema de Autenticação**
+- ✅ Login com CPF e senha
+- ✅ Cadastro completo de usuários
+- ✅ Validação de CPF
+- ✅ Senhas criptografadas
+- ✅ Sessões seguras
+
+### **2. Interface Moderna**
+- ✅ Design responsivo
+- ✅ Ícones Font Awesome
+- ✅ Animações CSS
+- ✅ Validação JavaScript
+- ✅ Máscaras de entrada
+
+### **3. Banco de Dados**
+- ✅ Conexão MySQL
+- ✅ Tabelas criadas automaticamente
+- ✅ Dados de exemplo inseridos
+- ✅ Relacionamentos configurados
+
+### **4. Dashboard do Usuário**
+- ✅ Informações pessoais
+- ✅ Status de doador
+- ✅ Questionário de aptidão
+- ✅ Agendamentos
+
+---
+
+## 🔧 **COMANDOS ÚTEIS**
+
+### **Gerenciar Apache**
+```cmd
+# Iniciar Apache
+net start Apache2.4
+
+# Parar Apache
+net stop Apache2.4
+
+# Reiniciar Apache
+net stop Apache2.4 && net start Apache2.4
+```
+
+### **Verificar Status**
+```cmd
+# Verificar se Apache está rodando
+netstat -an | findstr :80
+
+# Verificar logs
+type C:\Apache24\logs\error.log
+```
+
+### **Testar Aplicação**
+```cmd
+# Testar via curl
+curl http://localhost/
+
+# Testar via PowerShell
+Invoke-WebRequest -Uri "http://localhost/" -Method Get
+```
+
+---
+
+## 📊 **CONFIGURAÇÕES DO APACHE**
+
+### **Arquivo de Configuração:**
+```apache
+<VirtualHost *:80>
+    ServerName localhost
+    DocumentRoot "C:/Apache24/htdocs/projeto-qr-code-php"
+    
+    # Configurações de PHP
+    <FilesMatch "\.php$">
+        SetHandler application/x-httpd-php
+    </FilesMatch>
+    
+    # Configurações de segurança
+    <Directory "C:/Apache24/htdocs/projeto-qr-code-php">
+        Options -Indexes
+        AllowOverride All
+        Require all granted
+    </Directory>
+</VirtualHost>
+```
+
+---
+
+## 🗄️ **BANCO DE DADOS**
+
+### **Tabelas Criadas:**
+- `usuarios` - Dados dos usuários
+- `doadores` - Informações dos doadores
+- `questionarios` - Questionário de aptidão
+- `agendamentos` - Agendamentos de doações
+
+### **Configuração:**
+```php
+$host = 'localhost';
+$db_name = 'projeto_qr_code';
+$username = 'root';
+$password = '@Ed85962u';
+```
+
+---
+
+## 🚨 **TROUBLESHOOTING**
+
+### **Erro: "Apache não inicia"**
+```cmd
+# Verificar configuração
+C:\Apache24\bin\httpd.exe -t
+
+# Verificar logs
+type C:\Apache24\logs\error.log
+```
+
+### **Erro: "PHP não funciona"**
+```cmd
+# Verificar se PHP está habilitado
+# Editar httpd.conf e adicionar:
+LoadModule php_module "C:/Apache24/php/php8apache2_4.dll"
+AddType application/x-httpd-php .php
+```
+
+### **Erro: "Banco não conecta"**
+```cmd
+# Verificar MySQL
+mysql -u root -p"@Ed85962u" -e "SHOW DATABASES;"
+
+# Verificar configuração em config/database.php
+```
+
+### **Erro: "Página não carrega"**
+```cmd
+# Verificar se Apache está rodando
+netstat -an | findstr :80
+
+# Verificar se arquivos estão em htdocs
+dir C:\Apache24\htdocs\projeto-qr-code-php\
+```
+
+---
+
+## 📝 **LOGS IMPORTANTES**
+
+### **Apache Logs:**
+- `C:\Apache24\logs\error.log` - Erros do Apache
+- `C:\Apache24\logs\access.log` - Acessos
+- `C:\Apache24\logs\projeto-qr-code_error.log` - Erros específicos
+
+### **PHP Logs:**
+- `C:\Apache24\logs\php_errors.log` - Erros do PHP
+
+---
+
+## 🎯 **TESTE RÁPIDO**
+
+### **1. Executar Instalação**
+```cmd
+instalar-apache.bat
+```
+
+### **2. Aguardar 10 segundos**
+
+### **3. Acessar**
+- http://localhost/
+
+### **4. Testar Login**
+- CPF: `123.456.789-00`
+- Senha: `senha123`
+
+---
+
+## ✅ **VERIFICAÇÃO FINAL**
+
+### **Checklist de Funcionamento**
+- [ ] Apache inicia sem erros
+- [ ] PHP funciona corretamente
+- [ ] Banco de dados conecta
+- [ ] Página inicial carrega
+- [ ] Login funciona
+- [ ] Cadastro funciona
+- [ ] Dashboard carrega
+
+### **Se tudo funcionar:**
+```
+✅ APLICAÇÃO PHP FUNCIONANDO PERFEITAMENTE!
+🌐 URL: http://localhost/
+📱 Dados: CPF 123.456.789-00 / Senha senha123
+```
+
+---
+
+## 🎉 **PRONTO!**
+
+Sua aplicação **Projeto QR Code** agora está rodando em **PHP no Apache24**!
+
+**Vantagens da versão PHP:**
+- ✅ Mais simples de configurar
+- ✅ Melhor compatibilidade com Apache
+- ✅ Mais fácil de manter
+- ✅ Performance adequada
+- ✅ Interface moderna
+
+**Comandos para usar:**
+- `instalar-apache.bat` - Instalar aplicação
+- `net start Apache2.4` - Iniciar Apache
+- `net stop Apache2.4` - Parar Apache
+
+**URLs importantes:**
+- Aplicação: http://localhost/
+- Login: http://localhost/login.php
+- Cadastro: http://localhost/cadastro.php
+
+- # Documentação de Configuração do Projeto e-Triagem
+
+Este arquivo descreve todas as configurações e dados necessários para o funcionamento do sistema e-Triagem.
+
+## Estrutura da Pasta `config`
+
+- `database.php`: Script responsável pela conexão com o banco de dados MySQL.
+- `README.md`: Documentação das configurações e dados utilizados.
+
+## Configuração do Banco de Dados
+
+O sistema utiliza MySQL como banco de dados. Os dados de conexão estão definidos em `database.php`.
+
+### Exemplo de configuração (`database.php`):
+```php
+$host = 'localhost';
+$user = 'usuario';
+$password = 'senha';
+$dbname = 'e_triagem';
+$conn = new mysqli($host, $user, $password, $dbname);
+```
+
+- **host**: Endereço do servidor MySQL (geralmente `localhost`)
+- **user**: Usuário do banco de dados
+- **password**: Senha do usuário
+- **dbname**: Nome do banco de dados
+
+### Requisitos do Banco de Dados
+
+- O banco de dados deve conter as tabelas necessárias para cadastro, login, dashboard e demais funcionalidades do sistema.
+- Recomenda-se criar um usuário específico para o sistema com permissões restritas.
+
+## Configuração do Apache
+
+- O arquivo `apache-config.conf` contém exemplos de configuração para o Apache.
+- Certifique-se de que o Apache está instalado e configurado para servir arquivos PHP.
+- O diretório raiz do projeto deve ser configurado como `DocumentRoot` no Apache.
+
+## Configuração do PHP
+
+- O PHP deve estar instalado e configurado no servidor.
+- Recomenda-se PHP 7.4 ou superior.
+- Extensão `mysqli` deve estar habilitada.
+
+## Segurança
+
+- Nunca compartilhe dados sensíveis (usuário/senha) em ambientes públicos.
+- Utilize variáveis de ambiente ou arquivos `.env` para armazenar credenciais em produção.
+- Mantenha o arquivo `database.php` fora do diretório público sempre que possível.
+
+## Dados Sensíveis
+
+- Os dados de acesso ao banco de dados são definidos em `database.php`.
+- Altere as credenciais padrão após a instalação.
+
+## Observações
+
+---
+
+## Funcionalidades do Aplicativo e-Triagem
+
+O sistema e-Triagem é capaz de:
+
+- 👤 Realizar cadastro de usuários (pacientes, profissionais, administradores)
+- 🔑 Gerenciar login e autenticação de usuários
+- 📝 Registrar triagem de pacientes
+- 📊 Exibir painel/dashboard com estatísticas e informações relevantes
+- 📋 Listar, editar e excluir registros de pacientes
+- 🛡️ Gerenciar permissões de acesso por tipo de usuário
+- 🕓 Registrar histórico de atendimentos
+- 📄 Gerar relatórios de triagem e atendimentos
+- 🔍 Buscar pacientes por nome, CPF ou outros filtros
+- 🚪 Realizar logout seguro
+- 💻 Interface web responsiva e intuitiva
+- 🗄️ Integração com banco de dados MySQL
+- 🔒 Segurança básica de dados e sessões
+- 👥 Suporte a múltiplos usuários simultâneos
+- 🎨 Customização de estilos via CSS
+- ⚡ Scripts interativos via JavaScript
+- 🛠️ Fácil instalação e configuração em ambiente Apache/PHP
+
+---
+
+Consulte o arquivo `GUIA-APACHE-PHP.md` para instruções detalhadas de instalação do Apache e PHP.
+Para dúvidas ou problemas, consulte a documentação oficial do Apache e PHP.
+
+---
+
+**Última atualização:** 23 de setembro de 2025
