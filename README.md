@@ -1,4 +1,5 @@
 ##Apresentação 
+
 O sistema E-Triagem foi desenvolvido com o objetivo de modernizar e automatizar o processo de triagem e controle de doadores voluntários de sangue. A plataforma visa garantir a segurança e a eficiência na avaliação da aptidão dos doadores, facilitando o registro das informações, o acompanhamento do histórico e o gerenciamento das regras relacionadas à quarentena, bloqueios e agendamentos. Com uma arquitetura baseada em banco de dados relacional, o sistema organiza informações essenciais sobre os usuários, suas respostas aos questionários de triagem, agendamentos e configurações gerais do processo.
 
 Além disso, o E-Triagem oferece uma interface amigável para administração, permitindo que os responsáveis acompanhem em tempo real o status dos doadores e gerenciem facilmente as regras aplicadas, incluindo o controle detalhado de quarentenas, que assegura rastreabilidade e histórico de todas as aplicações dessas regras. A automatização do preenchimento dos questionários e a atualização automática do status do doador promovem maior confiabilidade e redução de erros manuais, ao mesmo tempo em que facilitam a comunicação com os voluntários.
