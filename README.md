@@ -1,411 +1,45 @@
+##Apresentação 
+O sistema E-Triagem foi desenvolvido com o objetivo de modernizar e automatizar o processo de triagem e controle de doadores voluntários de sangue. A plataforma visa garantir a segurança e a eficiência na avaliação da aptidão dos doadores, facilitando o registro das informações, o acompanhamento do histórico e o gerenciamento das regras relacionadas à quarentena, bloqueios e agendamentos. Com uma arquitetura baseada em banco de dados relacional, o sistema organiza informações essenciais sobre os usuários, suas respostas aos questionários de triagem, agendamentos e configurações gerais do processo.
 
-# Título do Projeto
-
-Uma breve descrição sobre o que esse projeto faz e para quem ele é
-
-# 🚀 GUIA APACHE + PHP - PROJETO QR CODE
-## Sistema de Doação de Sangue em PHP
+Além disso, o E-Triagem oferece uma interface amigável para administração, permitindo que os responsáveis acompanhem em tempo real o status dos doadores e gerenciem facilmente as regras aplicadas, incluindo o controle detalhado de quarentenas, que assegura rastreabilidade e histórico de todas as aplicações dessas regras. A automatização do preenchimento dos questionários e a atualização automática do status do doador promovem maior confiabilidade e redução de erros manuais, ao mesmo tempo em que facilitam a comunicação com os voluntários.
 
----
-
-## 📋 **CONVERSÃO COMPLETA REALIZADA**
-
-Seu projeto Java foi convertido para **PHP** e está pronto para rodar no **Apache24**!
-
----
-
-## 🎯 **ARQUIVOS CRIADOS**
-
-### **Estrutura do Projeto PHP:**
-```
-projeto-qr-code-php/
-├── index.php                 # Página inicial
-├── login.php                 # Sistema de login
-├── cadastro.php              # Cadastro de usuários
-├── dashboard.php             # Painel do usuário
-├── logout.php                # Logout
-├── config/
-│   └── database.php          # Configuração do banco
-├── assets/
-│   ├── css/
-│   │   └── style.css         # Estilos CSS
-│   └── js/
-│       └── script.js         # JavaScript
-├── apache-config.conf        # Configuração do Apache
-├── instalar-apache.bat       # Script de instalação
-└── GUIA-APACHE-PHP.md        # Este guia
-```
-
----
-
-## 🚀 **INSTALAÇÃO AUTOMÁTICA**
-
-### **1. Execute o Script de Instalação**
-```cmd
-# Navegue para a pasta do projeto
-cd "H:\Meu Drive\98-WORKSPACES\02-HEMOFLOW\hemoflow-core\projetos\ProjetoQrCode\projeto-qr-code-php"
-
-# Execute o script de instalação
-instalar-apache.bat
-```
-
-**O script faz tudo automaticamente:**
-- ✅ Verifica Apache, PHP e MySQL
-- ✅ Para o Apache
-- ✅ Copia projeto para htdocs
-- ✅ Configura banco de dados
-- ✅ Configura Apache
-- ✅ Inicia Apache
-- ✅ Testa aplicação
-- ✅ Abre navegador
-
----
-
-## 🔧 **INSTALAÇÃO MANUAL**
-
-### **1. Copiar Projeto**
-```cmd
-# Copiar para htdocs do Apache
-xcopy "projeto-qr-code-php" "C:\Apache24\htdocs\projeto-qr-code-php\" /E /I /Y
-```
-
-### **2. Configurar Banco de Dados**
-```cmd
-# Criar banco
-mysql -u root -p"@Ed85962u" -e "CREATE DATABASE IF NOT EXISTS projeto_qr_code CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
-```
-
-### **3. Configurar Apache**
-Adicione ao arquivo `C:\Apache24\conf\httpd.conf`:
-```apache
-# Projeto QR Code
-Include "C:/Apache24/htdocs/projeto-qr-code-php/apache-config.conf"
-```
-
-### **4. Iniciar Apache**
-```cmd
-net start Apache2.4
-```
-
----
-
-## 🌐 **ACESSAR APLICAÇÃO**
-
-### **URLs de Acesso:**
-- **Página Inicial:** http://localhost/
-- **Login:** http://localhost/login.php
-- **Cadastro:** http://localhost/cadastro.php
-- **Dashboard:** http://localhost/dashboard.php
-
-### **Dados de Teste:**
-- **CPF:** 123.456.789-00
-- **Senha:** senha123
-
----
-
-## ✨ **FUNCIONALIDADES IMPLEMENTADAS**
-
-### **1. Sistema de Autenticação**
-- ✅ Login com CPF e senha
-- ✅ Cadastro completo de usuários
-- ✅ Validação de CPF
-- ✅ Senhas criptografadas
-- ✅ Sessões seguras
-
-### **2. Interface Moderna**
-- ✅ Design responsivo
-- ✅ Ícones Font Awesome
-- ✅ Animações CSS
-- ✅ Validação JavaScript
-- ✅ Máscaras de entrada
-
-### **3. Banco de Dados**
-- ✅ Conexão MySQL
-- ✅ Tabelas criadas automaticamente
-- ✅ Dados de exemplo inseridos
-- ✅ Relacionamentos configurados
-
-### **4. Dashboard do Usuário**
-- ✅ Informações pessoais
-- ✅ Status de doador
-- ✅ Questionário de aptidão
-- ✅ Agendamentos
-
----
-
-## 🔧 **COMANDOS ÚTEIS**
-
-### **Gerenciar Apache**
-```cmd
-# Iniciar Apache
-net start Apache2.4
-
-# Parar Apache
-net stop Apache2.4
-
-# Reiniciar Apache
-net stop Apache2.4 && net start Apache2.4
-```
-
-### **Verificar Status**
-```cmd
-# Verificar se Apache está rodando
-netstat -an | findstr :80
-
-# Verificar logs
-type C:\Apache24\logs\error.log
-```
-
-### **Testar Aplicação**
-```cmd
-# Testar via curl
-curl http://localhost/
-
-# Testar via PowerShell
-Invoke-WebRequest -Uri "http://localhost/" -Method Get
-```
-
----
-
-## 📊 **CONFIGURAÇÕES DO APACHE**
-
-### **Arquivo de Configuração:**
-```apache
-<VirtualHost *:80>
-    ServerName localhost
-    DocumentRoot "C:/Apache24/htdocs/projeto-qr-code-php"
-    
-    # Configurações de PHP
-    <FilesMatch "\.php$">
-        SetHandler application/x-httpd-php
-    </FilesMatch>
-    
-    # Configurações de segurança
-    <Directory "C:/Apache24/htdocs/projeto-qr-code-php">
-        Options -Indexes
-        AllowOverride All
-        Require all granted
-    </Directory>
-</VirtualHost>
-```
-
----
-
-## 🗄️ **BANCO DE DADOS**
-
-### **Tabelas Criadas:**
-- `usuarios` - Dados dos usuários
-- `doadores` - Informações dos doadores
-- `questionarios` - Questionário de aptidão
-- `agendamentos` - Agendamentos de doações
-
-### **Configuração:**
-```php
-$host = 'localhost';
-$db_name = 'projeto_qr_code';
-$username = 'root';
-$password = '@Ed85962u';
-```
-
----
-
-## 🚨 **TROUBLESHOOTING**
-
-### **Erro: "Apache não inicia"**
-```cmd
-# Verificar configuração
-C:\Apache24\bin\httpd.exe -t
-
-# Verificar logs
-type C:\Apache24\logs\error.log
-```
-
-### **Erro: "PHP não funciona"**
-```cmd
-# Verificar se PHP está habilitado
-# Editar httpd.conf e adicionar:
-LoadModule php_module "C:/Apache24/php/php8apache2_4.dll"
-AddType application/x-httpd-php .php
-```
-
-### **Erro: "Banco não conecta"**
-```cmd
-# Verificar MySQL
-mysql -u root -p"@Ed85962u" -e "SHOW DATABASES;"
-
-# Verificar configuração em config/database.php
-```
-
-### **Erro: "Página não carrega"**
-```cmd
-# Verificar se Apache está rodando
-netstat -an | findstr :80
-
-# Verificar se arquivos estão em htdocs
-dir C:\Apache24\htdocs\projeto-qr-code-php\
-```
-
----
-
-## 📝 **LOGS IMPORTANTES**
-
-### **Apache Logs:**
-- `C:\Apache24\logs\error.log` - Erros do Apache
-- `C:\Apache24\logs\access.log` - Acessos
-- `C:\Apache24\logs\projeto-qr-code_error.log` - Erros específicos
-
-### **PHP Logs:**
-- `C:\Apache24\logs\php_errors.log` - Erros do PHP
-
----
+O projeto também prevê a expansão para funcionalidades futuras, como notificações automáticas sobre o término das quarentenas, integração com bancos de sangue externos e melhorias baseadas no feedback dos usuários. Dessa forma, o E-Triagem busca contribuir significativamente para a qualidade do processo de doação, promovendo segurança, agilidade e transparência para doadores, equipes administrativas e instituições envolvidas.
 
-## 🎯 **TESTE RÁPIDO**
-
-### **1. Executar Instalação**
-```cmd
-instalar-apache.bat
-```
+##Principais Funcionalidades
 
-### **2. Aguardar 10 segundos**
-
-### **3. Acessar**
-- http://localhost/
+O sistema E-Triagem oferece um conjunto robusto de funcionalidades voltadas para otimizar e assegurar o processo de triagem de doadores. Entre as principais funcionalidades, destaca-se o cadastro e autenticação de usuários, diferenciando perfis administrativos e comuns para garantir acesso adequado às informações. O preenchimento digital dos questionários de triagem permite uma avaliação rápida e precisa da aptidão dos doadores, com armazenamento detalhado das respostas para análise e histórico. O sistema também controla automaticamente o status dos doadores, atualizando informações como aptidão, bloqueios e quarentenas conforme as regras estabelecidas, garantindo a conformidade e a segurança.
 
-### **4. Testar Login**
-- CPF: `123.456.789-00`
-- Senha: `senha123`
+Além disso, o E-Triagem possibilita o agendamento eficiente das doações, com acompanhamento do status de cada compromisso, seja agendado, realizado ou faltado, possibilitando uma gestão dinâmica e organizada das doações. O controle das regras de quarentena é gerenciado por meio de uma tabela específica, que registra todas as aplicações dessas regras aos doadores, permitindo rastreabilidade e histórico completo. Por fim, a plataforma conta com configurações globais que podem ser ajustadas para personalizar parâmetros importantes do sistema, assegurando flexibilidade para diferentes contextos e necessidades operacionais.
 
----
+##Tecnologias Envolvidas
 
-## ✅ **VERIFICAÇÃO FINAL**
+-Apache
+-MySQL
+-Visual Studio Code
 
-### **Checklist de Funcionamento**
-- [ ] Apache inicia sem erros
-- [ ] PHP funciona corretamente
-- [ ] Banco de dados conecta
-- [ ] Página inicial carrega
-- [ ] Login funciona
-- [ ] Cadastro funciona
-- [ ] Dashboard carrega
+Outras ferramentas de apoio:
+-Modelagem: MermaidChart (Modelagem de diagramas)
 
-### **Se tudo funcionar:**
-```
-✅ APLICAÇÃO PHP FUNCIONANDO PERFEITAMENTE!
-🌐 URL: http://localhost/
-📱 Dados: CPF 123.456.789-00 / Senha senha123
-```
 
----
-
-## 🎉 **PRONTO!**
-
-Sua aplicação **Projeto QR Code** agora está rodando em **PHP no Apache24**!
-
-**Vantagens da versão PHP:**
-- ✅ Mais simples de configurar
-- ✅ Melhor compatibilidade com Apache
-- ✅ Mais fácil de manter
-- ✅ Performance adequada
-- ✅ Interface moderna
+## Projeto
 
-**Comandos para usar:**
-- `instalar-apache.bat` - Instalar aplicação
-- `net start Apache2.4` - Iniciar Apache
-- `net stop Apache2.4` - Parar Apache
+Entidade-relacionamento
 
-**URLs importantes:**
-- Aplicação: http://localhost/
-- Login: http://localhost/login.php
-- Cadastro: http://localhost/cadastro.php
 
-- # Documentação de Configuração do Projeto e-Triagem
+<img width="1114" height="1029" alt="image" src="https://github.com/user-attachments/assets/2a22dc42-6f9e-4c58-bb4a-49a7f79a73a6" />
 
-Este arquivo descreve todas as configurações e dados necessários para o funcionamento do sistema e-Triagem.
+Diagrama de Classe 
 
-## Estrutura da Pasta `config`
+<img width="3706" height="2221" alt="image" src="https://github.com/user-attachments/assets/833de24b-0ee2-4eaa-995d-4037aea0f3e1" />
 
-- `database.php`: Script responsável pela conexão com o banco de dados MySQL.
-- `README.md`: Documentação das configurações e dados utilizados.
+Gestão de estados
 
-## Configuração do Banco de Dados
+<img width="800" height="600" alt="image" src="https://github.com/user-attachments/assets/302f2e5d-5722-4de2-ad97-fa3f010bca7e" />
 
-O sistema utiliza MySQL como banco de dados. Os dados de conexão estão definidos em `database.php`.
+ Fluxograma
+ 
+<img width="1009" height="1950" alt="image" src="https://github.com/user-attachments/assets/f3cb597d-1a11-4f85-ac34-edf91059850c" />
 
-### Exemplo de configuração (`database.php`):
-```php
-$host = 'localhost';
-$user = 'usuario';
-$password = 'senha';
-$dbname = 'e_triagem';
-$conn = new mysqli($host, $user, $password, $dbname);
-```
+ 
 
-- **host**: Endereço do servidor MySQL (geralmente `localhost`)
-- **user**: Usuário do banco de dados
-- **password**: Senha do usuário
-- **dbname**: Nome do banco de dados
 
-### Requisitos do Banco de Dados
-
-- O banco de dados deve conter as tabelas necessárias para cadastro, login, dashboard e demais funcionalidades do sistema.
-- Recomenda-se criar um usuário específico para o sistema com permissões restritas.
-
-## Configuração do Apache
-
-- O arquivo `apache-config.conf` contém exemplos de configuração para o Apache.
-- Certifique-se de que o Apache está instalado e configurado para servir arquivos PHP.
-- O diretório raiz do projeto deve ser configurado como `DocumentRoot` no Apache.
-
-## Configuração do PHP
-
-- O PHP deve estar instalado e configurado no servidor.
-- Recomenda-se PHP 7.4 ou superior.
-- Extensão `mysqli` deve estar habilitada.
-
-## Segurança
-
-- Nunca compartilhe dados sensíveis (usuário/senha) em ambientes públicos.
-- Utilize variáveis de ambiente ou arquivos `.env` para armazenar credenciais em produção.
-- Mantenha o arquivo `database.php` fora do diretório público sempre que possível.
-
-## Dados Sensíveis
-
-- Os dados de acesso ao banco de dados são definidos em `database.php`.
-- Altere as credenciais padrão após a instalação.
-
-## Observações
-
----
-
-## Funcionalidades do Aplicativo e-Triagem
-
-O sistema e-Triagem é capaz de:
-
-- 👤 Realizar cadastro de usuários (pacientes, profissionais, administradores)
-- 🔑 Gerenciar login e autenticação de usuários
-- 📝 Registrar triagem de pacientes
-- 📊 Exibir painel/dashboard com estatísticas e informações relevantes
-- 📋 Listar, editar e excluir registros de pacientes
-- 🛡️ Gerenciar permissões de acesso por tipo de usuário
-- 🕓 Registrar histórico de atendimentos
-- 📄 Gerar relatórios de triagem e atendimentos
-- 🔍 Buscar pacientes por nome, CPF ou outros filtros
-- 🚪 Realizar logout seguro
-- 💻 Interface web responsiva e intuitiva
-- 🗄️ Integração com banco de dados MySQL
-- 🔒 Segurança básica de dados e sessões
-- 👥 Suporte a múltiplos usuários simultâneos
-- 🎨 Customização de estilos via CSS
-- ⚡ Scripts interativos via JavaScript
-- 🛠️ Fácil instalação e configuração em ambiente Apache/PHP
-
-<img width="800" height="600" alt="image" src="https://github.com/user-attachments/assets/ce044e46-b2cd-49d9-8016-249affe9d6c4" />
-
----
-
-Consulte o arquivo `GUIA-APACHE-PHP.md` para instruções detalhadas de instalação do Apache e PHP.
-Para dúvidas ou problemas, consulte a documentação oficial do Apache e PHP.
-
----
-
-**Última atualização:** 23 de setembro de 2025
